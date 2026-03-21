@@ -12,7 +12,7 @@ export default function BaseNode({ data, isConnectable }: NodeProps<BaseNodeData
   const badgeClass = badgeColors[data.type] || 'bg-gray-700 text-gray-200 border-gray-600';
 
   return (
-    <div className="w-64 rounded-xl border border-gray-800 bg-[#12121a]/90 backdrop-blur-md shadow-lg transition-transform hover:scale-[1.02] hover:border-gray-600 hover:shadow-xl overflow-hidden text-sm">
+    <div className="w-64 rounded-xl border border-gray-800 bg-[#12121a]/90 backdrop-blur-md shadow-lg transition-transform hover:scale-[1.02] hover:border-gray-600 hover:shadow-xl overflow-hidden text-sm node-animate-enter">
       <Handle type="target" position={Position.Left} isConnectable={isConnectable} className="w-3 h-3 bg-gray-500 border-2 border-[#12121a]" />
       
       {/* Header */}

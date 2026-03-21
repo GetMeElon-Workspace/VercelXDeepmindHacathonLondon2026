@@ -7,12 +7,14 @@ import { initialNodes, initialEdges } from './seed-data';
 interface AppState {
   nodes: Node[];
   edges: Edge[];
+  isInspectOpen: boolean;
   addProposalNodes: (proposals: Proposal[]) => void;
   acceptNode: (id: string) => void;
   rejectNode: (id: string) => void;
   getBaseModelContext: () => any;
   setNodes: (nodes: Node[]) => void;
   setEdges: (edges: Edge[]) => void;
+  setInspectOpen: (open: boolean) => void;
   onNodesChange: (changes: NodeChange[]) => void;
   onEdgesChange: (changes: EdgeChange[]) => void;
   onConnect: (connection: Connection) => void;
@@ -21,6 +23,7 @@ interface AppState {
 export const useStore = create<AppState>((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
+  isInspectOpen: false,
 
   addProposalNodes: (proposals) => {
     const newNodes: Node[] = proposals.map((p, index) => ({
@@ -67,6 +70,7 @@ export const useStore = create<AppState>((set, get) => ({
 
   setNodes: (nodes) => set({ nodes }),
   setEdges: (edges) => set({ edges }),
+  setInspectOpen: (open) => set({ isInspectOpen: open }),
   onNodesChange: (changes) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
