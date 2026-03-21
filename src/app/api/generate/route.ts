@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   const { prompt, baseModelContext } = await req.json();
 
   const result = await streamObject({
-    model: google('gemini-1.5-pro-latest'),
+    model: google('gemini-3.1-pro'),
     schema: NodeProposalSchema,
     system: `You are a senior financial analyst with deep knowledge in financial modeling and domain expertise in industrial plants. 
     The user will provide a base industrial plant model and ask you to create a new scenario branch.
