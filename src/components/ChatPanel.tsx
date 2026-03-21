@@ -11,7 +11,7 @@ export default function ChatPanel() {
   const addProposalNodes = useStore((state) => state.addProposalNodes);
   const getBaseModelContext = useStore((state) => state.getBaseModelContext);
 
-  const { submit, object, isLoading } = useObject({
+  const { submit, object, isLoading, error } = useObject({
     api: '/api/generate',
     schema: NodeProposalSchema,
     onFinish: ({ object }: { object: any }) => {
@@ -55,6 +55,12 @@ export default function ChatPanel() {
             <div className="text-sm">Gemini is analyzing and proposing nodes...</div>
           </div>
         )}
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/20 text-red-400 rounded-lg p-3 text-sm">
+            <span className="font-bold mr-2">Error:</span>
+            {error.message || 'An error occurred while communicating with the API.'}
+          </div>
+        )}
         {object?.proposals && object.proposals.length > 0 && (
           <div className="bg-white/5 border border-white/10 rounded-lg p-3">
             <div className="text-sm text-white/80">
@@ -75,7 +81,7 @@ export default function ChatPanel() {
           />
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={isLoading || !input.trim()}
             className="absolute right-2 top-2 bottom-2 px-3 rounded-lg bg-amber-500 text-black font-bold text-xs disabled:opacity-50 transition-opacity"
           >
             {isLoading ? '...' : '→'}
