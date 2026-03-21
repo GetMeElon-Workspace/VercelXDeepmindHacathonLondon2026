@@ -85,29 +85,28 @@ export const initialEdges: Edge[] = [
 export const completedFranceNodes: Node<BaseNodeData>[] = [
   ...initialNodes,
   {
-    id: 'france-reactor',
+    id: 'france-feedstock',
     type: 'base',
-    position: { x: 350, y: 350 },
+    position: { x: 50, y: 350 },
     data: {
-      label: 'France Expansion Reactor',
-      type: 'calc',
+      label: 'Feedstock Localization',
+      type: 'physics',
       data: [
-        { label: 'Conversion', value: '92 %' },
-        { label: 'Pressure', value: '6 atm' },
-        { label: 'Temperature', value: '340 °C' },
+        { label: 'Local Feedstock', value: 'European Supply' },
+        { label: 'Price Premium', value: '15 %' },
       ],
     },
   },
   {
-    id: 'france-product',
+    id: 'france-ets',
     type: 'base',
     position: { x: 650, y: 350 },
     data: {
-      label: 'France Output',
-      type: 'physics',
+      label: 'EU ETS',
+      type: 'financial',
       data: [
-        { label: 'Yield', value: '1050 kg/hr' },
-        { label: 'Purity', value: '99.8 %' },
+        { label: 'Carbon Tax', value: '€90 /tonne' },
+        { label: 'Allowance', value: 'Reduced' },
       ],
     },
   }
@@ -115,6 +114,6 @@ export const completedFranceNodes: Node<BaseNodeData>[] = [
 
 export const completedFranceEdges: Edge[] = [
   ...initialEdges,
-  { id: 'e1-f1', source: 'feedstock', target: 'france-reactor', animated: true },
-  { id: 'ef1-f2', source: 'france-reactor', target: 'france-product', animated: true },
+  { id: 'e-feedstock-fr', source: 'france-feedstock', target: 'feedstock', animated: true },
+  { id: 'e-ets-cost', source: 'france-ets', target: 'cost', animated: true },
 ];

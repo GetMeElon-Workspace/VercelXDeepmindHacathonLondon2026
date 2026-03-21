@@ -258,3 +258,4 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
   Symbol(vercel.ai.error.AI_APICallError): true
 }
  POST /api/generate 200 in 173ms
+ ✓ Compiled in 31ms

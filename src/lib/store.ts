@@ -75,13 +75,16 @@ export const useStore = create<AppState>((set, get) => ({
       }
 
       // Create an edge from the parent to the accepted node
+      // If the node is financial or related to feedstock, it should flow INTO the parent
+      const isInbound = node.data.type === 'financial' || node.data.label?.toLowerCase().includes('feedstock') || node.data.title?.toLowerCase().includes('feedstock');
+      
       const newEdges = parentNode
         ? [
             ...state.edges,
             {
               id: `e-${parentNode.id}-${id}`,
-              source: parentNode.id,
-              target: id,
+              source: isInbound ? id : parentNode.id,
+              target: isInbound ? parentNode.id : id,
               animated: true,
             },
           ]
