@@ -29,3 +29,9 @@ yarn-error.log*
 # local env files
 .env*.local
 .vercel
+
+# project specific
+.gstack
+*.tsbuildinfo
+wl2-canvas/
+wl3-ai-stream/

@@ -1,0 +1,260 @@
+
+> hackathon-deepmind@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 656ms
+ ○ Compiling / ...
+ ✓ Compiled / in 712ms (1220 modules)
+ GET / 200 in 842ms
+ ✓ Compiled /api/generate in 403ms (1329 modules)
+APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
+    at eval (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2609:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async postToApi (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2452:28)
+    at async GoogleGenerativeAILanguageModel.doStream (webpack-internal:///(rsc)/./node_modules/@ai-sdk/google/dist/index.mjs:1256:50)
+    at async fn (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:10797:23)
+    at async eval (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2351:24)
+    at async _retryWithExponentialBackoff (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2669:12)
+    at async fn (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:10767:13)
+    at async eval (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2351:24) {
+  cause: undefined,
+  url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro:streamGenerateContent?alt=sse',
+  requestBodyValues: {
+    generationConfig: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topK: undefined,
+      topP: undefined,
+      frequencyPenalty: undefined,
+      presencePenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      responseMimeType: 'application/json',
+      responseSchema: [Object],
+      responseModalities: undefined,
+      thinkingConfig: undefined
+    },
+    contents: [ [Object] ],
+    systemInstruction: { parts: [Array] },
+    safetySettings: undefined,
+    tools: undefined,
+    toolConfig: undefined,
+    cachedContent: undefined,
+    labels: undefined
+  },
+  statusCode: 400,
+  responseHeaders: {
+    'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+    'content-length': '581',
+    'content-type': 'text/event-stream',
+    date: 'Sat, 21 Mar 2026 16:36:10 GMT',
+    server: 'scaffolding on HTTPServer2',
+    'server-timing': 'gfet4t7; dur=35',
+    vary: 'Origin, X-Origin, Referer',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-xss-protection': '0'
+  },
+  responseBody: '{\n' +
+    '  "error": {\n' +
+    '    "code": 400,\n' +
+    '    "message": "API Key not found. Please pass a valid API key.",\n' +
+    '    "status": "INVALID_ARGUMENT",\n' +
+    '    "details": [\n' +
+    '      {\n' +
+    '        "@type": "type.googleapis.com/google.rpc.ErrorInfo",\n' +
+    '        "reason": "API_KEY_INVALID",\n' +
+    '        "domain": "googleapis.com",\n' +
+    '        "metadata": {\n' +
+    '          "service": "generativelanguage.googleapis.com"\n' +
+    '        }\n' +
+    '      },\n' +
+    '      {\n' +
+    '        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",\n' +
+    '        "locale": "en-US",\n' +
+    '        "message": "API Key not found. Please pass a valid API key."\n' +
+    '      }\n' +
+    '    ]\n' +
+    '  }\n' +
+    '}\n',
+  isRetryable: false,
+  data: {
+    error: {
+      code: 400,
+      message: 'API Key not found. Please pass a valid API key.',
+      status: 'INVALID_ARGUMENT'
+    }
+  },
+  Symbol(vercel.ai.error): true,
+  Symbol(vercel.ai.error.AI_APICallError): true
+}
+ POST /api/generate 200 in 490ms
+APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
+    at eval (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2609:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async postToApi (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2452:28)
+    at async GoogleGenerativeAILanguageModel.doStream (webpack-internal:///(rsc)/./node_modules/@ai-sdk/google/dist/index.mjs:1256:50)
+    at async fn (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:10797:23)
+    at async eval (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2351:24)
+    at async _retryWithExponentialBackoff (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2669:12)
+    at async fn (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:10767:13)
+    at async eval (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2351:24) {
+  cause: undefined,
+  url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro:streamGenerateContent?alt=sse',
+  requestBodyValues: {
+    generationConfig: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topK: undefined,
+      topP: undefined,
+      frequencyPenalty: undefined,
+      presencePenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      responseMimeType: 'application/json',
+      responseSchema: [Object],
+      responseModalities: undefined,
+      thinkingConfig: undefined
+    },
+    contents: [ [Object] ],
+    systemInstruction: { parts: [Array] },
+    safetySettings: undefined,
+    tools: undefined,
+    toolConfig: undefined,
+    cachedContent: undefined,
+    labels: undefined
+  },
+  statusCode: 400,
+  responseHeaders: {
+    'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+    'content-length': '581',
+    'content-type': 'text/event-stream',
+    date: 'Sat, 21 Mar 2026 16:36:26 GMT',
+    server: 'scaffolding on HTTPServer2',
+    'server-timing': 'gfet4t7; dur=27',
+    vary: 'Origin, X-Origin, Referer',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-xss-protection': '0'
+  },
+  responseBody: '{\n' +
+    '  "error": {\n' +
+    '    "code": 400,\n' +
+    '    "message": "API Key not found. Please pass a valid API key.",\n' +
+    '    "status": "INVALID_ARGUMENT",\n' +
+    '    "details": [\n' +
+    '      {\n' +
+    '        "@type": "type.googleapis.com/google.rpc.ErrorInfo",\n' +
+    '        "reason": "API_KEY_INVALID",\n' +
+    '        "domain": "googleapis.com",\n' +
+    '        "metadata": {\n' +
+    '          "service": "generativelanguage.googleapis.com"\n' +
+    '        }\n' +
+    '      },\n' +
+    '      {\n' +
+    '        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",\n' +
+    '        "locale": "en-US",\n' +
+    '        "message": "API Key not found. Please pass a valid API key."\n' +
+    '      }\n' +
+    '    ]\n' +
+    '  }\n' +
+    '}\n',
+  isRetryable: false,
+  data: {
+    error: {
+      code: 400,
+      message: 'API Key not found. Please pass a valid API key.',
+      status: 'INVALID_ARGUMENT'
+    }
+  },
+  Symbol(vercel.ai.error): true,
+  Symbol(vercel.ai.error.AI_APICallError): true
+}
+ POST /api/generate 200 in 60ms
+APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
+    at eval (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2609:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async postToApi (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2452:28)
+    at async GoogleGenerativeAILanguageModel.doStream (webpack-internal:///(rsc)/./node_modules/@ai-sdk/google/dist/index.mjs:1256:50)
+    at async fn (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:10797:23)
+    at async eval (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2351:24)
+    at async _retryWithExponentialBackoff (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2669:12)
+    at async fn (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:10767:13)
+    at async eval (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2351:24) {
+  cause: undefined,
+  url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro:streamGenerateContent?alt=sse',
+  requestBodyValues: {
+    generationConfig: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topK: undefined,
+      topP: undefined,
+      frequencyPenalty: undefined,
+      presencePenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      responseMimeType: 'application/json',
+      responseSchema: [Object],
+      responseModalities: undefined,
+      thinkingConfig: undefined
+    },
+    contents: [ [Object] ],
+    systemInstruction: { parts: [Array] },
+    safetySettings: undefined,
+    tools: undefined,
+    toolConfig: undefined,
+    cachedContent: undefined,
+    labels: undefined
+  },
+  statusCode: 400,
+  responseHeaders: {
+    'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+    'content-length': '581',
+    'content-type': 'text/event-stream',
+    date: 'Sat, 21 Mar 2026 16:36:31 GMT',
+    server: 'scaffolding on HTTPServer2',
+    'server-timing': 'gfet4t7; dur=33',
+    vary: 'Origin, X-Origin, Referer',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-xss-protection': '0'
+  },
+  responseBody: '{\n' +
+    '  "error": {\n' +
+    '    "code": 400,\n' +
+    '    "message": "API Key not found. Please pass a valid API key.",\n' +
+    '    "status": "INVALID_ARGUMENT",\n' +
+    '    "details": [\n' +
+    '      {\n' +
+    '        "@type": "type.googleapis.com/google.rpc.ErrorInfo",\n' +
+    '        "reason": "API_KEY_INVALID",\n' +
+    '        "domain": "googleapis.com",\n' +
+    '        "metadata": {\n' +
+    '          "service": "generativelanguage.googleapis.com"\n' +
+    '        }\n' +
+    '      },\n' +
+    '      {\n' +
+    '        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",\n' +
+    '        "locale": "en-US",\n' +
+    '        "message": "API Key not found. Please pass a valid API key."\n' +
+    '      }\n' +
+    '    ]\n' +
+    '  }\n' +
+    '}\n',
+  isRetryable: false,
+  data: {
+    error: {
+      code: 400,
+      message: 'API Key not found. Please pass a valid API key.',
+      status: 'INVALID_ARGUMENT'
+    }
+  },
+  Symbol(vercel.ai.error): true,
+  Symbol(vercel.ai.error.AI_APICallError): true
+}
+ POST /api/generate 200 in 112ms

@@ -1,7 +1,7 @@
 {
-  "pid": 21250,
-  "port": 17551,
-  "token": "338266fb-f0ae-4d12-90ea-0e2b1b2de6cd",
-  "startedAt": "2026-03-21T15:43:59.000Z",
-  "serverPath": "/Users/dan/.claude/skills/gstack/browse/src/server.ts"
+  "pid": 23923,
+  "port": 14421,
+  "token": "1436017b-f841-4b06-bd56-7c7bf39a5812",
+  "startedAt": "2026-03-21T16:29:26.303Z",
+  "serverPath": "/Users/dan/.gemini/skills/gstack/browse/src/server.ts"
 }
