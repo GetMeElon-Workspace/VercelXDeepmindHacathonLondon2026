@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Financial Node Visualizer',
-  description: 'Miro for Spreadsheets - powered by Gemini 3.1 Pro',
+  description: 'Miro for Spreadsheets - powered by Gemini 3 Flash Preview',
 }
 
 export default function RootLayout({

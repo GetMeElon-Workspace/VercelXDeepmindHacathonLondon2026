@@ -3,7 +3,7 @@
 > **Statement:** Statement Three — AI Applications
 > **Demo Length:** 3 minutes (live)
 > **Deadline:** ~16:30 UTC, 2026-03-21
-> **Stack:** Next.js + Vercel AI SDK + Gemini 3.1 Pro + Supabase + React Flow
+> **Stack:** Next.js + Vercel AI SDK + Gemini 3 Flash Preview + Supabase + React Flow
 
 ---
 
@@ -83,7 +83,7 @@ Do not attempt these today:
 > "Low-trust users can grab just the inputs and verify them in their own spreadsheet. High-trust users get the full model."
 
 ### The Close (2:30–3:00)
-> "Every value is traceable. Every decision is auditable. This is Miro for financial models — powered by Gemini 3.1 Pro."
+> "Every value is traceable. Every decision is auditable. This is Miro for financial models — powered by Gemini 3 Flash Preview."
 
 **Screen:** Final beauty shot of the complete graph with accepted nodes wired in.
 

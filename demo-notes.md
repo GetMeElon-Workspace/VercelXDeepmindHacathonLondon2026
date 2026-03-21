@@ -55,7 +55,7 @@
 
 ### CLOSE — "The Takeaway" (10 sec)
 
-> "Every value is traceable. Every decision is auditable. This is **Miro for financial models** — powered by Gemini 3.1 Pro."
+> "Every value is traceable. Every decision is auditable. This is **Miro for financial models** — powered by Gemini 3 Flash Preview."
 
 ☝️ **On screen:** Full canvas. Accepted nodes wired in. Complete, beautiful graph.
 
@@ -68,7 +68,7 @@
 | **Gemini is slow / times out** | Say "While that processes..." → switch to pre-seeded France branch → "Here's what the completed branch looks like" |
 | **Gemini returns bad data** | Acknowledge: "And this is why Accept/Reject exists — the analyst catches mistakes" → reject the bad node → show the pre-seeded version |
 | **App crashes** | Switch to backup video recording immediately. Keep narrating. |
-| **React Flow layout is ugly** | Drag nodes to better positions live — React Flow supports it. Makes it feel interactive. |
+| **React Flow layout is ugly** | The Dagre auto-layout should snap nodes cleanly Top-to-Bottom. If not, drag nodes to better positions live. |
 | **Someone asks a hard question** | "Great question — this is a hackathon prototype focused on the UX pattern. The underlying AI can be fine-tuned with domain-specific datasets for production." |
 
 ---
@@ -85,7 +85,7 @@
 > "Absolutely. The architecture is vertical-agnostic. We demoed methanol, but the same pattern works for any model-driven industry — energy, manufacturing, even financial derivatives. Swap the system prompt and seed data."
 
 ### "What's your tech stack?"
-> "Next.js on Vercel, Gemini 3.1 Pro via Vercel AI SDK with `streamObject` for structured output, React Flow for the canvas, and Supabase for persistence and branching."
+> "Next.js on Vercel, Gemini 3 Flash Preview via Vercel AI SDK with `streamObject` for structured output, React Flow for the canvas, and Supabase for persistence and branching."
 
 ### "What would you build next?"
 > "Three things: multi-user collaboration with real-time Supabase sync, version history across branches, and export to common financial formats like Excel and PDF reports."

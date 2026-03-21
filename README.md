@@ -9,7 +9,7 @@
 </h1>
 
 <h3 align="center">
-  <em>Miro for Financial Models — powered by Gemini 3.1 Pro</em>
+  <em>Miro for Financial Models — powered by Gemini 3 Flash Preview</em>
 </h3>
 
 <p align="center">
@@ -33,7 +33,7 @@ Financial modeling for industrial plants (chemicals, energy, manufacturing) reli
 An **Unreal Engine Blueprints-style** interactive canvas where:
 
 1. A base industrial model is displayed as a connected **node graph**
-2. Users chat with **Gemini 3.1 Pro** to branch scenarios (_"Branch for France"_)
+2. Users chat with **Gemini 3 Flash Preview** to branch scenarios (_"Branch for France"_)
 3. AI proposes missing data as **new nodes** with rationale + source links
 4. Users **Accept ✓** or **Reject ✗** each proposal before it merges
 5. **QA Inspect Mode** lets any stakeholder audit inputs vs. outputs
@@ -77,8 +77,8 @@ An **Unreal Engine Blueprints-style** interactive canvas where:
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
 | **Framework** | Next.js 14 (App Router) | Server actions, streaming, deployment |
-| **AI** | Vercel AI SDK + Gemini 3.1 Pro | `streamObject` for structured node proposals |
-| **Visualization** | React Flow | Interactive node-based canvas |
+| **AI** | Vercel AI SDK + Gemini 3 Flash Preview | `streamObject` for structured node proposals |
+| **Visualization** | React Flow + Dagre | Interactive node-based canvas with automatic DAG layout |
 | **State** | Zustand | Lightweight global state for nodes/edges |
 | **Validation** | Zod | Schema validation for AI-generated proposals |
 | **Database** | Supabase (Postgres + Realtime) | Model persistence and branching |
@@ -113,13 +113,13 @@ const NodeProposalSchema = z.object({
 ### AI Flow
 
 ```
-User prompt ──▶ Server Action ──▶ Gemini 3.1 Pro (streamObject)
+User prompt ──▶ Server Action ──▶ Gemini 3 Flash Preview (streamObject)
                                          │
                                          ▼
                               Zod-validated proposals
                                          │
                                          ▼
-                              Zustand store ──▶ React Flow canvas
+                              Zustand store ──▶ React Flow canvas (Dagre Layout)
                                                      │
                                               ┌──────┴──────┐
                                               ▼             ▼
@@ -178,7 +178,7 @@ src/
 ### Prerequisites
 
 - Node.js 18+
-- A [Google AI Studio](https://aistudio.google.com/) API key (Gemini 3.1 Pro)
+- A [Google AI Studio](https://aistudio.google.com/) API key (Gemini 3 Flash Preview)
 
 ### Setup
 
@@ -205,7 +205,7 @@ Open [http://localhost:3000](http://localhost:3000) — you should see the Plant
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `GOOGLE_GENERATIVE_AI_API_KEY` | ✅ | Your Gemini 3.1 Pro API key from Google AI Studio |
+| `GOOGLE_GENERATIVE_AI_API_KEY` | ✅ | Your Gemini 3 Flash Preview API key from Google AI Studio |
 
 ---
 
@@ -235,10 +235,10 @@ Open [http://localhost:3000](http://localhost:3000) — you should see the Plant
 
 **Vercel x DeepMind Hackathon 2026** — Statement Three: AI Applications
 
-> _"Turn Excel into an interactive, node-based visual canvas powered by Gemini 3.1 Pro. Instead of just chatting with data, the user chats with an agent that dynamically generates and wires up new nodes with proposed missing data — which the user can formally Accept or Reject to merge into the main model."_
+> _"Turn Excel into an interactive, node-based visual canvas powered by Gemini 3 Flash Preview. Instead of just chatting with data, the user chats with an agent that dynamically generates and wires up new nodes with proposed missing data — which the user can formally Accept or Reject to merge into the main model."_
 
 ---
 
 <p align="center">
-  <sub>Built with 🧪 by <strong>Dan + Tara</strong> · Powered by Gemini 3.1 Pro · Deployed on Vercel</sub>
+  <sub>Built with 🧪 by <strong>Dan + Tara</strong> · Powered by Gemini 3 Flash Preview · Deployed on Vercel</sub>
 </p>

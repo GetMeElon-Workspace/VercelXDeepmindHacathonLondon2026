@@ -10,12 +10,12 @@ Mode: Builder
 Financial modeling and mass/heat balances for industrial plants are messy and highly specific—and this extends across verticals (chemicals, energy, manufacturing, etc.). When analysts update a dataset (e.g., trying a new geography like France), there are often partial gaps in the data that break the model. They need a way to easily trace inputs, visualize the flow, branch off new scenarios, intelligently fill in missing data, and **audit every AI-generated value back to its source**.
 
 ## What Makes This Cool
-The "whoa" factor is turning Excel into an interactive, node-based visual canvas (like Unreal Engine Blueprints) powered by Vercel AI SDK and Gemini 3.1 Pro. Instead of just "chatting" with data, the user chats with an agent that dynamically generates and wires up new nodes with proposed missing data—which the user can formally "Accept" or "Reject" to merge into the main model.
+The "whoa" factor is turning Excel into an interactive, node-based visual canvas (like Unreal Engine Blueprints) powered by Vercel AI SDK and Gemini 3 Flash Preview. Instead of just "chatting" with data, the user chats with an agent that dynamically generates and wires up new nodes with proposed missing data—which the user can formally "Accept" or "Reject" to merge into the main model.
 
 ## Constraints
 - Must fit Vercel x Deepmind Hackathon "Statement Three: AI Applications"
 - 3-minute live demo (must be visually impressive and fail-proof)
-- Must use Google Gemini 3.1 Pro (via Vercel AI SDK)
+- Must use Google Gemini 3 Flash Preview (via Vercel AI SDK)
 - Using Supabase for real-time state and branching
 
 ## Premises
@@ -79,7 +79,7 @@ A core trust mechanism: anyone (analyst, manager, reviewer) can inspect the data
 ## Next Steps
 1. Scaffold Next.js app with Vercel AI SDK and Supabase.
 2. Build the static React Flow canvas with dummy data.
-3. Wire up the Gemini 3.1 Pro chat interface using `streamUI` or `streamObject`.
+3. Wire up the Gemini 3 Flash Preview chat interface using `streamUI` or `streamObject`.
 4. Implement the "Accept/Reject" logic to merge pending nodes into the active graph.
 
 ## What I noticed about how you think
@@ -87,7 +87,7 @@ A core trust mechanism: anyone (analyst, manager, reviewer) can inspect the data
 - When I challenged the premise of AI hallucinating physics, you immediately instituted a hard constraint: "for any missing data, it has to be approved from the user." That's real product thinking.
 - You didn't take the easy way out (Approach A static demo), opting for the harder but more rewarding path of real data + real AI generation.
 
-## AI Integration Details (Vercel AI SDK x Gemini 3.1 Pro)
+## AI Integration Details (Vercel AI SDK x Gemini 3 Flash Preview)
 **System Prompt:**
 > You are a senior financial analyst with deep knowledge in financial modeling and domain expertise in the vertical being analyzed (e.g., chemicals, energy, manufacturing). The user will provide a base industrial plant model and ask you to create a new scenario branch (e.g., "build this plant in France").
 > Your job is to analyze the new context, pull in relevant localized commodity prices, and estimate missing data (like heat efficiency or feedstock yield changes).

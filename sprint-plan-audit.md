@@ -1,7 +1,7 @@
 # 🚀 Hackathon Agent Workflow Guide
 
 > **Time Remaining:** ~1h 49m (deadline ~16:30 UTC)
-> **Stack:** Next.js App Router + Vercel AI SDK + Gemini 3.1 Pro + React Flow + Zustand
+> **Stack:** Next.js App Router + Vercel AI SDK + Gemini 3 Flash Preview + React Flow + Zustand
 > **Strategy:** Fix foundation → parallel agents → merge → polish → deploy
 
 ---
@@ -113,7 +113,7 @@ git merge main
 **Prompt for Agent B:**
 > Read `workload-plan.md` and complete all tasks under **WL3: AI Integration**. You are in a git worktree on branch `feat/wl3-ai-stream`. Build:
 > - `src/lib/schema.ts` — Zod `NodeProposalSchema`
-> - `src/app/api/generate/route.ts` — POST route using `streamObject` with `@ai-sdk/google` + `gemini-3.1-pro`
+> - `src/app/api/generate/route.ts` — POST route using `streamObject` with `@ai-sdk/google` + `gemini-3-flash-preview`
 > - `src/lib/store.ts` — Zustand store (nodes, edges, addProposalNodes, acceptNode, rejectNode, getBaseModelContext)
 > - `src/components/ChatPanel.tsx` — input box, sends prompt to `/api/generate`, dispatches proposals to store
 >
@@ -173,5 +173,5 @@ Resolve any minor conflicts (likely just `page.tsx` imports). Then build:
 | Dev server | `npm run dev` → `http://localhost:3000` |
 | Deploy | `npx vercel --prod` |
 | Env var name | `GOOGLE_GENERATIVE_AI_API_KEY` |
-| AI model | `gemini-3.1-pro` via `@ai-sdk/google` |
+| AI model | `gemini-3-flash-preview` via `@ai-sdk/google` |
 | React Flow pkg | `reactflow@^11.11.4` (v11 API) |
