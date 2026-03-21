@@ -26,12 +26,15 @@ interface AppState {
 }
 
 export const useStore = create<AppState>((set, get) => ({
-  nodes: initialNodes,
+  nodes: initialNodes.map(n => n.id === 'cost' ? { ...n, draggable: false } : n),
   edges: initialEdges,
   isInspectOpen: false,
   reactFlowInstance: null,
 
-  setReactFlowInstance: (reactFlowInstance) => set({ reactFlowInstance }),
+  setReactFlowInstance: (reactFlowInstance) => {
+    set({ reactFlowInstance });
+    get().autoLayout();
+  },
 
   addProposalNodes: (proposals) => {
     const newNodes: Node[] = proposals.map((p) => {
@@ -116,6 +119,7 @@ export const useStore = create<AppState>((set, get) => ({
       set((state) => ({
         nodes: state.nodes.filter((n) => n.id !== id),
       }));
+      get().autoLayout();
     }, 300);
   },
 
@@ -131,7 +135,7 @@ export const useStore = create<AppState>((set, get) => ({
     const { nodes, edges, reactFlowInstance } = get();
     const dagreGraph = new dagre.graphlib.Graph();
     dagreGraph.setDefaultEdgeLabel(() => ({}));
-    dagreGraph.setGraph({ rankdir: 'LR' }); // Left to Right layout
+    dagreGraph.setGraph({ rankdir: 'TB' }); // Top to Bottom layout
 
     const nodeWidth = 320;
     const nodeHeight = 150;
@@ -146,14 +150,22 @@ export const useStore = create<AppState>((set, get) => ({
 
     dagre.layout(dagreGraph);
 
+    let costNodePos = { x: 0, y: 0 };
+
     const layoutedNodes = nodes.map((node) => {
       const nodeWithPosition = dagreGraph.node(node.id);
+      const position = {
+        x: nodeWithPosition.x - nodeWidth / 2,
+        y: nodeWithPosition.y - nodeHeight / 2,
+      };
+      
+      if (node.id === 'cost') {
+        costNodePos = position;
+      }
+
       return {
         ...node,
-        position: {
-          x: nodeWithPosition.x - nodeWidth / 2,
-          y: nodeWithPosition.y - nodeHeight / 2,
-        },
+        position,
       };
     });
 
@@ -161,7 +173,11 @@ export const useStore = create<AppState>((set, get) => ({
 
     if (reactFlowInstance) {
       window.requestAnimationFrame(() => {
-        reactFlowInstance.fitView({ duration: 800, padding: 0.2 });
+        if (costNodePos.x !== 0 || costNodePos.y !== 0) {
+          reactFlowInstance.setCenter(costNodePos.x + nodeWidth / 2, costNodePos.y + nodeHeight / 2, { zoom: 1, duration: 800 });
+        } else {
+          reactFlowInstance.fitView({ duration: 800, padding: 0.2 });
+        }
       });
     }
   },

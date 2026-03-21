@@ -11,10 +11,12 @@ import 'reactflow/dist/style.css';
 import BaseNode from './BaseNode';
 import ProposalNode from './ProposalNode';
 import InspectPanel from './InspectPanel';
+import FloatingEdge from './FloatingEdge';
 import { useStore } from '../lib/store';
 import { completedFranceNodes, completedFranceEdges } from '../lib/seed-data';
 
 const nodeTypes = { base: BaseNode, proposal: ProposalNode };
+const edgeTypes = { default: FloatingEdge };
 
 export default function Canvas() {
   const { nodes, edges, onNodesChange, onEdgesChange, setNodes, setEdges, setInspectOpen, setReactFlowInstance } = useStore();
@@ -49,6 +51,7 @@ export default function Canvas() {
         onEdgesChange={onEdgesChange}
         onInit={setReactFlowInstance}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         fitView
         proOptions={{ hideAttribution: true }}
       >

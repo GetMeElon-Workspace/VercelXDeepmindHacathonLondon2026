@@ -10,7 +10,7 @@ export const initialNodes: Node<BaseNodeData>[] = [
   {
     id: 'feedstock',
     type: 'base',
-    position: { x: 50, y: 150 },
+    position: { x: 350, y: 150 },
     data: {
       label: 'Feedstock Input',
       type: 'physics',
@@ -23,7 +23,7 @@ export const initialNodes: Node<BaseNodeData>[] = [
   {
     id: 'reactor',
     type: 'base',
-    position: { x: 350, y: 150 },
+    position: { x: 350, y: 400 },
     data: {
       label: 'Main Reactor',
       type: 'calc',
@@ -37,7 +37,7 @@ export const initialNodes: Node<BaseNodeData>[] = [
   {
     id: 'heatex',
     type: 'base',
-    position: { x: 650, y: 150 },
+    position: { x: 350, y: 650 },
     data: {
       label: 'Heat Exchanger',
       type: 'physics',
@@ -50,7 +50,7 @@ export const initialNodes: Node<BaseNodeData>[] = [
   {
     id: 'product',
     type: 'base',
-    position: { x: 950, y: 150 },
+    position: { x: 350, y: 900 },
     data: {
       label: 'Product Output',
       type: 'physics',
@@ -63,7 +63,8 @@ export const initialNodes: Node<BaseNodeData>[] = [
   {
     id: 'cost',
     type: 'base',
-    position: { x: 950, y: 350 },
+    position: { x: 350, y: 1150 },
+    draggable: false,
     data: {
       label: 'Cost Summary',
       type: 'financial',
@@ -87,7 +88,7 @@ export const completedFranceNodes: Node<BaseNodeData>[] = [
   {
     id: 'france-feedstock',
     type: 'base',
-    position: { x: 50, y: 350 },
+    position: { x: 50, y: 150 },
     data: {
       label: 'Feedstock Localization',
       type: 'physics',
@@ -100,7 +101,7 @@ export const completedFranceNodes: Node<BaseNodeData>[] = [
   {
     id: 'france-ets',
     type: 'base',
-    position: { x: 650, y: 350 },
+    position: { x: 650, y: 1150 },
     data: {
       label: 'EU ETS',
       type: 'financial',
