@@ -17,7 +17,7 @@ import { completedFranceNodes, completedFranceEdges } from '../lib/seed-data';
 const nodeTypes = { base: BaseNode, proposal: ProposalNode };
 
 export default function Canvas() {
-  const { nodes, edges, onNodesChange, onEdgesChange, setNodes, setEdges, setInspectOpen } = useStore();
+  const { nodes, edges, onNodesChange, onEdgesChange, setNodes, setEdges, setInspectOpen, setReactFlowInstance } = useStore();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -47,6 +47,7 @@ export default function Canvas() {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        onInit={setReactFlowInstance}
         nodeTypes={nodeTypes}
         fitView
         proOptions={{ hideAttribution: true }}
