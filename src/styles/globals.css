@@ -85,3 +85,39 @@
   70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
   100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
 }
+
+/* Canvas Background Glow */
+.canvas-background {
+  background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, #0a0a0f 60%);
+}
+
+/* Node Animations */
+.node-animate-enter {
+  animation: node-appear 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.node-animate-exit {
+  animation: node-disappear 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes node-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes node-disappear {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-5px);
+  }
+}

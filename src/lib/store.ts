@@ -44,17 +44,24 @@ export const useStore = create<AppState>((set, get) => ({
         n.id === id ? { ...n, data: { ...n.data, status: 'active' }, type: 'base' } : n
       );
 
-      // Create a default edge to a parent if possible, or just merge
-      // For the hackathon demo, we might just mark it active.
-      // A more complex logic would find the most relevant parent.
       return { nodes: updatedNodes };
     });
   },
 
   rejectNode: (id) => {
+    // Set exiting state first to trigger animation
     set((state) => ({
-      nodes: state.nodes.filter((n) => n.id !== id),
+      nodes: state.nodes.map((n) =>
+        n.id === id ? { ...n, data: { ...n.data, exiting: true } } : n
+      ),
     }));
+    
+    // Remove after animation completes
+    setTimeout(() => {
+      set((state) => ({
+        nodes: state.nodes.filter((n) => n.id !== id),
+      }));
+    }, 300);
   },
 
   getBaseModelContext: () => {

@@ -19,7 +19,8 @@ export default function ProposalNode({ id, data, isConnectable }: NodeProps<Prop
   const badgeClass = badgeColors[data.type] || 'bg-gray-700 text-gray-200 border-gray-600';
 
   return (
-    <div className="w-80 rounded-xl border-2 border-dashed border-yellow-600 glass-panel pending-node shadow-[0_0_15px_rgba(202,138,4,0.2)] transition-all hover:scale-[1.02] overflow-hidden text-sm relative">
+    <div className={`w-80 rounded-xl border-2 border-dashed border-yellow-600 glass-panel pending-node shadow-[0_0_15px_rgba(202,138,4,0.2)] transition-all hover:scale-[1.02] overflow-hidden text-sm relative node-animate-enter ${data.exiting ? 'node-animate-exit' : ''}`}>
+
       <Handle 
         type="target" 
         position={Position.Left} 
