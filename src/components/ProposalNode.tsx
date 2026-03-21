@@ -23,6 +23,14 @@ export default function ProposalNode({ id, data, isConnectable }: NodeProps<Prop
       <Handle 
         type="target" 
         position={Position.Left} 
+        id="left"
+        isConnectable={isConnectable} 
+        className="w-3 h-3 bg-yellow-500 border-2 border-[#12121a]" 
+      />
+      <Handle 
+        type="target" 
+        position={Position.Top} 
+        id="top"
         isConnectable={isConnectable} 
         className="w-3 h-3 bg-yellow-500 border-2 border-[#12121a]" 
       />
@@ -88,6 +96,14 @@ export default function ProposalNode({ id, data, isConnectable }: NodeProps<Prop
       <Handle 
         type="source" 
         position={Position.Right} 
+        id="right"
+        isConnectable={isConnectable} 
+        className="w-3 h-3 bg-yellow-500 border-2 border-[#12121a]" 
+      />
+      <Handle 
+        type="source" 
+        position={Position.Bottom} 
+        id="bottom"
         isConnectable={isConnectable} 
         className="w-3 h-3 bg-yellow-500 border-2 border-[#12121a]" 
       />

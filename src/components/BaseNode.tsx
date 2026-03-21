@@ -13,7 +13,8 @@ export default function BaseNode({ data, isConnectable }: NodeProps<BaseNodeData
 
   return (
     <div className="w-64 rounded-xl border border-gray-800 bg-[#12121a]/90 backdrop-blur-md shadow-lg transition-transform hover:scale-[1.02] hover:border-gray-600 hover:shadow-xl overflow-hidden text-sm node-animate-enter">
-      <Handle type="target" position={Position.Left} isConnectable={isConnectable} className="w-3 h-3 bg-gray-500 border-2 border-[#12121a]" />
+      <Handle type="target" position={Position.Left} id="left" isConnectable={isConnectable} className="w-3 h-3 bg-gray-500 border-2 border-[#12121a]" />
+      <Handle type="target" position={Position.Top} id="top" isConnectable={isConnectable} className="w-3 h-3 bg-gray-500 border-2 border-[#12121a]" />
       
       {/* Header */}
       <div className="flex items-center justify-between p-3 border-b border-gray-800 bg-[#1a1a24]/50">
@@ -33,7 +34,8 @@ export default function BaseNode({ data, isConnectable }: NodeProps<BaseNodeData
         ))}
       </div>
 
-      <Handle type="source" position={Position.Right} isConnectable={isConnectable} className="w-3 h-3 bg-gray-500 border-2 border-[#12121a]" />
+      <Handle type="source" position={Position.Right} id="right" isConnectable={isConnectable} className="w-3 h-3 bg-gray-500 border-2 border-[#12121a]" />
+      <Handle type="source" position={Position.Bottom} id="bottom" isConnectable={isConnectable} className="w-3 h-3 bg-gray-500 border-2 border-[#12121a]" />
     </div>
   );
 }

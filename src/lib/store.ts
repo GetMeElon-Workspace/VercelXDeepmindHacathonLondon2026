@@ -3,6 +3,8 @@ import { Node, Edge, Connection, addEdge, applyNodeChanges, applyEdgeChanges, No
 import { Proposal } from './schema';
 import { v4 as uuidv4 } from 'uuid';
 import { initialNodes, initialEdges } from './seed-data';
+import dagre from 'dagre';
+
 
 interface AppState {
   nodes: Node[];
@@ -11,6 +13,7 @@ interface AppState {
   addProposalNodes: (proposals: Proposal[]) => void;
   acceptNode: (id: string) => void;
   rejectNode: (id: string) => void;
+  autoLayout: () => void;
   getBaseModelContext: () => any;
   setNodes: (nodes: Node[]) => void;
   setEdges: (edges: Edge[]) => void;
@@ -31,36 +34,11 @@ export const useStore = create<AppState>((set, get) => ({
   setReactFlowInstance: (reactFlowInstance) => set({ reactFlowInstance }),
 
   addProposalNodes: (proposals) => {
-    const { nodes: existingNodes, reactFlowInstance } = get();
-    // Position new proposals below the existing graph to avoid overlaps
-    const maxY = existingNodes.reduce((max, n) => Math.max(max, n.position.y), 0);
-    const minX = existingNodes.length > 0 ? existingNodes.reduce((min, n) => Math.min(min, n.position.x), existingNodes[0].position.x) : 0;
-    
-    // We will organize them in horizontal layers based on their category
-    // physics on top, calc in middle, financial at the bottom
-    const categoryYOffset = {
-      physics: 180,
-      calc: 360,
-      financial: 540
-    };
-
-    // Track how many nodes we've placed in each category to stagger their X position
-    const categoryXCount = {
-      physics: 0,
-      calc: 0,
-      financial: 0
-    };
-
     const newNodes: Node[] = proposals.map((p) => {
-      // Determine the category, default to calc if unknown
-      const category = (p.type === 'physics' || p.type === 'calc' || p.type === 'financial') ? p.type : 'calc';
-      const xOffset = minX + categoryXCount[category] * 350;
-      categoryXCount[category]++;
-
       return {
         id: p.id || uuidv4(),
         type: 'proposal',
-        position: { x: xOffset, y: maxY + categoryYOffset[category] },
+        position: { x: 0, y: 0 }, // Position will be handled by autoLayout
         data: { 
           ...p,
           status: 'pending'
@@ -69,13 +47,7 @@ export const useStore = create<AppState>((set, get) => ({
     });
     
     set((state) => ({ nodes: [...state.nodes, ...newNodes] }));
-    
-    // Auto-zoom to fit the new proposals
-    if (reactFlowInstance) {
-      setTimeout(() => {
-        reactFlowInstance.fitView({ duration: 800, padding: 0.2 });
-      }, 100);
-    }
+    get().autoLayout();
   },
 
   acceptNode: (id) => {
@@ -128,13 +100,7 @@ export const useStore = create<AppState>((set, get) => ({
       return { nodes: updatedNodes, edges: newEdges };
     });
     
-    // Auto-zoom after the graph wires itself up
-    const { reactFlowInstance } = get();
-    if (reactFlowInstance) {
-      setTimeout(() => {
-        reactFlowInstance.fitView({ duration: 800, padding: 0.2 });
-      }, 100);
-    }
+    get().autoLayout();
   },
 
   rejectNode: (id) => {
@@ -159,6 +125,45 @@ export const useStore = create<AppState>((set, get) => ({
       activeNodes: nodes.filter((n) => n.data.status === 'active'),
       edges: edges,
     };
+  },
+
+  autoLayout: () => {
+    const { nodes, edges, reactFlowInstance } = get();
+    const dagreGraph = new dagre.graphlib.Graph();
+    dagreGraph.setDefaultEdgeLabel(() => ({}));
+    dagreGraph.setGraph({ rankdir: 'LR' }); // Left to Right layout
+
+    const nodeWidth = 320;
+    const nodeHeight = 150;
+
+    nodes.forEach((node) => {
+      dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
+    });
+
+    edges.forEach((edge) => {
+      dagreGraph.setEdge(edge.source, edge.target);
+    });
+
+    dagre.layout(dagreGraph);
+
+    const layoutedNodes = nodes.map((node) => {
+      const nodeWithPosition = dagreGraph.node(node.id);
+      return {
+        ...node,
+        position: {
+          x: nodeWithPosition.x - nodeWidth / 2,
+          y: nodeWithPosition.y - nodeHeight / 2,
+        },
+      };
+    });
+
+    set({ nodes: layoutedNodes });
+
+    if (reactFlowInstance) {
+      window.requestAnimationFrame(() => {
+        reactFlowInstance.fitView({ duration: 800, padding: 0.2 });
+      });
+    }
   },
 
   setNodes: (nodes) => set({ nodes }),
