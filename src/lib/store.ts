@@ -1,7 +1,8 @@
 import { create } from 'zustand';
-import { Node, Edge, Connection, addEdge } from 'reactflow';
+import { Node, Edge, Connection, addEdge, applyNodeChanges, applyEdgeChanges, NodeChange, EdgeChange } from 'reactflow';
 import { Proposal } from './schema';
 import { v4 as uuidv4 } from 'uuid';
+import { initialNodes, initialEdges } from './seed-data';
 
 interface AppState {
   nodes: Node[];
@@ -12,14 +13,14 @@ interface AppState {
   getBaseModelContext: () => any;
   setNodes: (nodes: Node[]) => void;
   setEdges: (edges: Edge[]) => void;
-  onNodesChange: (changes: any) => void;
-  onEdgesChange: (changes: any) => void;
+  onNodesChange: (changes: NodeChange[]) => void;
+  onEdgesChange: (changes: EdgeChange[]) => void;
   onConnect: (connection: Connection) => void;
 }
 
 export const useStore = create<AppState>((set, get) => ({
-  nodes: [],
-  edges: [],
+  nodes: initialNodes,
+  edges: initialEdges,
 
   addProposalNodes: (proposals) => {
     const newNodes: Node[] = proposals.map((p, index) => ({
@@ -66,8 +67,16 @@ export const useStore = create<AppState>((set, get) => ({
 
   setNodes: (nodes) => set({ nodes }),
   setEdges: (edges) => set({ edges }),
-  onNodesChange: (changes) => {}, // React Flow handles this usually, but we can wire it up
-  onEdgesChange: (changes) => {},
+  onNodesChange: (changes) => {
+    set({
+      nodes: applyNodeChanges(changes, get().nodes),
+    });
+  },
+  onEdgesChange: (changes) => {
+    set({
+      edges: applyEdgeChanges(changes, get().edges),
+    });
+  },
   onConnect: (connection) => {
     set((state) => ({
       edges: addEdge(connection, state.edges),

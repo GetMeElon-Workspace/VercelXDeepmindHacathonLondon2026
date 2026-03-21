@@ -1,37 +1,21 @@
 'use client';
 
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo } from 'react';
 import ReactFlow, { 
   Background, 
   Controls, 
-  MiniMap, 
-  applyNodeChanges, 
-  applyEdgeChanges,
-  NodeChange,
-  EdgeChange,
-  Node,
-  Edge
+  MiniMap
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import BaseNode from './BaseNode';
-import { initialNodes, initialEdges } from '../lib/seed-data';
+import ProposalNode from './ProposalNode';
+import { useStore } from '../lib/store';
 
 export default function Canvas() {
-  const [nodes, setNodes] = useState<Node[]>(initialNodes);
-  const [edges, setEdges] = useState<Edge[]>(initialEdges);
+  const { nodes, edges, onNodesChange, onEdgesChange } = useStore();
 
-  const nodeTypes = useMemo(() => ({ base: BaseNode }), []);
-
-  const onNodesChange = useCallback(
-    (changes: NodeChange[]) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    []
-  );
-  
-  const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    []
-  );
+  const nodeTypes = useMemo(() => ({ base: BaseNode, proposal: ProposalNode }), []);
 
   return (
     <div className="w-full h-full bg-[#0a0a0f]">
