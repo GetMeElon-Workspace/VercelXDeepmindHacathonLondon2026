@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 236, 236, 236;
+  --background-rgb: 10, 10, 15;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* React Flow custom variable overrides for dark theme */
+.react-flow {
+  --xy-edge-stroke-default: #334155;
+  --xy-edge-stroke-width-default: 2;
+  --xy-connectionline-stroke-default: #94a3b8;
+  --xy-connectionline-stroke-width-default: 2;
+  --xy-node-background-default: #1e293b;
+  --xy-node-color-default: #f8fafc;
+  --xy-node-border-default: #334155;
+  --xy-node-border-radius-default: 8px;
+  --xy-handle-background-color-default: #475569;
+  --xy-handle-border-color-default: #1e293b;
+  --xy-selection-background-color-default: rgba(56, 189, 248, 0.1);
+  --xy-selection-border-color-default: #38bdf8;
+  --xy-controls-button-background-color-default: #1e293b;
+  --xy-controls-button-border-color-default: #334155;
+  --xy-controls-button-color-default: #94a3b8;
+  --xy-controls-button-color-hover-default: #f8fafc;
+  --xy-controls-box-shadow-default: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+}
