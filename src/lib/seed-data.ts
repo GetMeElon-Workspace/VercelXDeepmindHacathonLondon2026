@@ -81,3 +81,40 @@ export const initialEdges: Edge[] = [
   { id: 'e3-4', source: 'heatex', target: 'product', animated: true },
   { id: 'e4-5', source: 'product', target: 'cost', animated: true },
 ];
+
+export const completedFranceNodes: Node<BaseNodeData>[] = [
+  ...initialNodes,
+  {
+    id: 'france-reactor',
+    type: 'base',
+    position: { x: 350, y: 350 },
+    data: {
+      label: 'France Expansion Reactor',
+      type: 'calc',
+      data: [
+        { label: 'Conversion', value: '92 %' },
+        { label: 'Pressure', value: '6 atm' },
+        { label: 'Temperature', value: '340 °C' },
+      ],
+    },
+  },
+  {
+    id: 'france-product',
+    type: 'base',
+    position: { x: 650, y: 350 },
+    data: {
+      label: 'France Output',
+      type: 'physics',
+      data: [
+        { label: 'Yield', value: '1050 kg/hr' },
+        { label: 'Purity', value: '99.8 %' },
+      ],
+    },
+  }
+];
+
+export const completedFranceEdges: Edge[] = [
+  ...initialEdges,
+  { id: 'e1-f1', source: 'feedstock', target: 'france-reactor', animated: true },
+  { id: 'ef1-f2', source: 'france-reactor', target: 'france-product', animated: true },
+];

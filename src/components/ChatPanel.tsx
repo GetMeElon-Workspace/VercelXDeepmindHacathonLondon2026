@@ -75,7 +75,7 @@ export default function ChatPanel() {
           />
           <button
             type="submit"
-            disabled={isLoading || !input.trim()}
+            disabled={isLoading}
             className="absolute right-2 top-2 bottom-2 px-3 rounded-lg bg-amber-500 text-black font-bold text-xs disabled:opacity-50 transition-opacity"
           >
             {isLoading ? '...' : '→'}

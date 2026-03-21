@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import ReactFlow, { 
   Background, 
   Controls, 
@@ -11,9 +11,22 @@ import 'reactflow/dist/style.css';
 import BaseNode from './BaseNode';
 import ProposalNode from './ProposalNode';
 import { useStore } from '../lib/store';
+import { completedFranceNodes, completedFranceEdges } from '../lib/seed-data';
 
 export default function Canvas() {
-  const { nodes, edges, onNodesChange, onEdgesChange } = useStore();
+  const { nodes, edges, onNodesChange, onEdgesChange, setNodes, setEdges } = useStore();
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'd') {
+        e.preventDefault();
+        setNodes(completedFranceNodes);
+        setEdges(completedFranceEdges);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [setNodes, setEdges]);
 
   const nodeTypes = useMemo(() => ({ base: BaseNode, proposal: ProposalNode }), []);
 
