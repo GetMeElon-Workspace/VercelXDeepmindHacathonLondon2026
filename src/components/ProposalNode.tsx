@@ -5,7 +5,7 @@ import { Proposal } from '../lib/schema';
 
 // React Flow passes the node's internal `id` as a top-level prop.
 // The `data` prop receives the data object defined when adding the node.
-type ProposalNodeData = Proposal & { status?: string };
+type ProposalNodeData = Proposal & { status?: string, exiting?: boolean };
 
 export default function ProposalNode({ id, data, isConnectable }: NodeProps<ProposalNodeData>) {
   const { acceptNode, rejectNode } = useStore();
@@ -20,7 +20,6 @@ export default function ProposalNode({ id, data, isConnectable }: NodeProps<Prop
 
   return (
     <div className={`w-80 rounded-xl border-2 border-dashed border-yellow-600 glass-panel pending-node shadow-[0_0_15px_rgba(202,138,4,0.2)] transition-all hover:scale-[1.02] overflow-hidden text-sm relative node-animate-enter ${data.exiting ? 'node-animate-exit' : ''}`}>
-
       <Handle 
         type="target" 
         position={Position.Left} 
