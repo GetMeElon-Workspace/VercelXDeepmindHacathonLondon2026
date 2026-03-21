@@ -26,10 +26,15 @@ export const useStore = create<AppState>((set, get) => ({
   isInspectOpen: false,
 
   addProposalNodes: (proposals) => {
+    const { nodes: existingNodes } = get();
+    // Position new proposals below the existing graph to avoid overlaps
+    const maxY = existingNodes.reduce((max, n) => Math.max(max, n.position.y), 0);
+    const baseY = maxY + 180;
+
     const newNodes: Node[] = proposals.map((p, index) => ({
       id: p.id || uuidv4(),
       type: 'proposal',
-      position: { x: 400 + index * 250, y: 100 + index * 50 },
+      position: { x: 150 + index * 320, y: baseY + index * 80 },
       data: { 
         ...p,
         status: 'pending'
@@ -43,11 +48,46 @@ export const useStore = create<AppState>((set, get) => ({
       const node = state.nodes.find((n) => n.id === id);
       if (!node) return state;
 
+      // Map proposal data fields to BaseNode-compatible fields
+      const acceptedData = {
+        ...node.data,
+        label: node.data.title || node.data.label, // Proposals use 'title', BaseNode uses 'label'
+        status: 'active',
+      };
+
       const updatedNodes = state.nodes.map((n) =>
-        n.id === id ? { ...n, data: { ...n.data, status: 'active' }, type: 'base' } : n
+        n.id === id ? { ...n, data: acceptedData, type: 'base' } : n
       );
 
-      return { nodes: updatedNodes };
+      // Find the best parent node to connect from:
+      // 1. Prefer a base node of the same type (calc→calc, physics→physics)
+      // 2. Fall back to any base/active node
+      const baseNodes = state.nodes.filter(
+        (n) => n.id !== id && n.type === 'base' && n.data.status !== 'pending'
+      );
+
+      let parentNode = baseNodes.find((n) => n.data.type === node.data.type);
+      if (!parentNode && baseNodes.length > 0) {
+        // Fall back to the rightmost base node (end of the chain)
+        parentNode = baseNodes.reduce((best, n) =>
+          n.position.x > best.position.x ? n : best
+        , baseNodes[0]);
+      }
+
+      // Create an edge from the parent to the accepted node
+      const newEdges = parentNode
+        ? [
+            ...state.edges,
+            {
+              id: `e-${parentNode.id}-${id}`,
+              source: parentNode.id,
+              target: id,
+              animated: true,
+            },
+          ]
+        : state.edges;
+
+      return { nodes: updatedNodes, edges: newEdges };
     });
   },
 
