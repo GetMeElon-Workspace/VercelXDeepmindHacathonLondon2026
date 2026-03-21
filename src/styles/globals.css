@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0a0a0f;
+    color: #e5e7eb;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass-panel {
+  background: rgba(18, 18, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.node-pending {
+  border-color: rgba(251, 191, 36, 0.8);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+}
+
+.node-accepted {
+  border-color: rgba(16, 185, 129, 0.8);
+}
+
+.node-rejected {
+  border-color: rgba(239, 68, 68, 0.4);
+  opacity: 0.6;
+}
