@@ -42,17 +42,6 @@ An **Unreal Engine Blueprints-style** interactive canvas where:
 
 ---
 
-## 🎬 Demo Flow (3 minutes)
-
-| Time | What Happens | On Screen |
-|------|-------------|-----------|
-| **0:00 – 0:20** | **The Hook** — "Analysts live in Excel. When they explore a new scenario, gaps break everything. We built something better." | Dark-themed React Flow canvas with Plant A model — 5 connected nodes glowing |
-| **0:20 – 1:30** | **The Magic** — Type _"Branch this model for France"_ in the chat panel | Gemini streams proposals. New amber-pulsing nodes appear with French-specific data (EU carbon tax, TTF gas prices, adjusted yields) |
-| **1:30 – 2:30** | **The Trust Layer** — Click **Accept** on one node (green merge animation). Click **Reject** on another (fade away). Open **QA Inspect Mode**. | Accept/reject with smooth animations. Side panel slides in showing input vs. output comparison with rationale |
-| **2:30 – 3:00** | **The Close** — "This is Miro for financial models — powered by Gemini 3.1 Pro." | Final beauty shot: complete graph with accepted nodes wired in |
-
----
-
 ## 🏗️ Architecture
 
 ```
@@ -251,5 +240,5 @@ Open [http://localhost:3000](http://localhost:3000) — you should see the Plant
 ---
 
 <p align="center">
-  <sub>Built with 🧪 by <strong>Dan</strong> · Powered by Gemini 3.1 Pro · Deployed on Vercel</sub>
+  <sub>Built with 🧪 by <strong>Dan + Tara</strong> · Powered by Gemini 3.1 Pro · Deployed on Vercel</sub>
 </p>

@@ -2,16 +2,14 @@
 > hackathon-deepmind@1.0.0 dev
 > next dev
 
+ ⚠ Port 3000 is in use, trying 3001 instead.
   ▲ Next.js 14.2.35
-  - Local:        http://localhost:3000
+  - Local:        http://localhost:3001
   - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 656ms
- ○ Compiling / ...
- ✓ Compiled / in 712ms (1220 modules)
- GET / 200 in 842ms
- ✓ Compiled /api/generate in 403ms (1329 modules)
+ ✓ Ready in 643ms
+ ✓ Compiled /api/generate in 315ms (185 modules)
 APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
     at eval (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2609:14)
     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
@@ -52,9 +50,9 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
     'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
     'content-length': '581',
     'content-type': 'text/event-stream',
-    date: 'Sat, 21 Mar 2026 16:36:10 GMT',
+    date: 'Sat, 21 Mar 2026 17:28:13 GMT',
     server: 'scaffolding on HTTPServer2',
-    'server-timing': 'gfet4t7; dur=35',
+    'server-timing': 'gfet4t7; dur=30',
     vary: 'Origin, X-Origin, Referer',
     'x-content-type-options': 'nosniff',
     'x-frame-options': 'SAMEORIGIN',
@@ -93,7 +91,8 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
   Symbol(vercel.ai.error): true,
   Symbol(vercel.ai.error.AI_APICallError): true
 }
- POST /api/generate 200 in 490ms
+ POST /api/generate 200 in 473ms
+ ✓ Compiled in 38ms (185 modules)
 APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
     at eval (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2609:14)
     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
@@ -134,9 +133,9 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
     'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
     'content-length': '581',
     'content-type': 'text/event-stream',
-    date: 'Sat, 21 Mar 2026 16:36:26 GMT',
+    date: 'Sat, 21 Mar 2026 17:28:33 GMT',
     server: 'scaffolding on HTTPServer2',
-    'server-timing': 'gfet4t7; dur=27',
+    'server-timing': 'gfet4t7; dur=24',
     vary: 'Origin, X-Origin, Referer',
     'x-content-type-options': 'nosniff',
     'x-frame-options': 'SAMEORIGIN',
@@ -175,7 +174,8 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
   Symbol(vercel.ai.error): true,
   Symbol(vercel.ai.error.AI_APICallError): true
 }
- POST /api/generate 200 in 60ms
+ POST /api/generate 200 in 79ms
+ ✓ Compiled in 35ms (185 modules)
 APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
     at eval (webpack-internal:///(rsc)/./node_modules/@ai-sdk/provider-utils/dist/index.mjs:2609:14)
     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
@@ -187,7 +187,7 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
     at async fn (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:10767:13)
     at async eval (webpack-internal:///(rsc)/./node_modules/ai/dist/index.mjs:2351:24) {
   cause: undefined,
-  url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro:streamGenerateContent?alt=sse',
+  url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:streamGenerateContent?alt=sse',
   requestBodyValues: {
     generationConfig: {
       maxOutputTokens: undefined,
@@ -216,9 +216,9 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
     'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
     'content-length': '581',
     'content-type': 'text/event-stream',
-    date: 'Sat, 21 Mar 2026 16:36:31 GMT',
+    date: 'Sat, 21 Mar 2026 17:29:11 GMT',
     server: 'scaffolding on HTTPServer2',
-    'server-timing': 'gfet4t7; dur=33',
+    'server-timing': 'gfet4t7; dur=31',
     vary: 'Origin, X-Origin, Referer',
     'x-content-type-options': 'nosniff',
     'x-frame-options': 'SAMEORIGIN',
@@ -257,8 +257,4 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
   Symbol(vercel.ai.error): true,
   Symbol(vercel.ai.error.AI_APICallError): true
 }
- POST /api/generate 200 in 112ms
- GET / 200 in 76ms
- ✓ Compiled /_not-found in 129ms (845 modules)
- GET /Users/dan/Public/Hackathon%20Deepmind/node_modules/playwright/lib/index.js 404 in 174ms
- GET /Users/dan/Public/Hackathon%20Deepmind/e2e/example.spec.ts 404 in 7ms
+ POST /api/generate 200 in 173ms
