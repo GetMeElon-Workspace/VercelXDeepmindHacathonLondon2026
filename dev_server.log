@@ -258,3 +258,7 @@ APICallError [AI_APICallError]: API Key not found. Please pass a valid API key.
   Symbol(vercel.ai.error.AI_APICallError): true
 }
  POST /api/generate 200 in 112ms
+ GET / 200 in 76ms
+ ✓ Compiled /_not-found in 129ms (845 modules)
+ GET /Users/dan/Public/Hackathon%20Deepmind/node_modules/playwright/lib/index.js 404 in 174ms
+ GET /Users/dan/Public/Hackathon%20Deepmind/e2e/example.spec.ts 404 in 7ms

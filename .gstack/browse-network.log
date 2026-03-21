@@ -1,8 +1,0 @@
-[2026-03-21T16:29:26.405Z] GET http://localhost:3000/ → 200 (17ms, 9426B)
-[2026-03-21T16:29:26.429Z] GET http://localhost:3000/_next/static/media/e4af272ccee01ff0-s.p.woff2 → 200 (8ms, 48432B)
-[2026-03-21T16:29:26.429Z] GET http://localhost:3000/_next/static/css/app/layout.css?v=1774110566412 → 200 (8ms, 28653B)
-[2026-03-21T16:29:26.429Z] GET http://localhost:3000/_next/static/css/app/page.css?v=1774110566412 → 200 (7ms, 9690B)
-[2026-03-21T16:29:26.429Z] GET http://localhost:3000/_next/static/chunks/webpack.js?v=1774110566412 → 200 (8ms, 56325B)
-[2026-03-21T16:29:26.429Z] GET http://localhost:3000/_next/static/chunks/main-app.js?v=1774110566412 → 200 (211ms, ?B)
-[2026-03-21T16:29:26.429Z] GET http://localhost:3000/_next/static/chunks/app-pages-internals.js → 200 (25ms, 132763B)
-[2026-03-21T16:29:26.429Z] GET http://localhost:3000/_next/static/chunks/app/page.js → 200 (109ms, 5788425B)
