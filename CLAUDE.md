@@ -1,4 +1,6 @@
 
+@AGENTS.md
+
 ## Testing
 - Run `npx vitest run` for unit tests.
 - See TESTING.md.
